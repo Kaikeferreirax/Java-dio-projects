@@ -1,3 +1,5 @@
+import java.util.Date;
+
 public class Product {
 
     private String name;
@@ -46,10 +48,9 @@ public class Product {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Product name: " + name +"\n");
-        sb.append("Product id: " + id +"\n");
-        sb.append("Product KG price: " + price * 1000 +"\n");
-
+        sb.append(" Product name: " + name +"\n");
+        sb.append(" Product id: " + id +"\n");
+        sb.append(" Product (KG) price: $" + price * 1000 +"\n");
 
 
        return sb.toString();
