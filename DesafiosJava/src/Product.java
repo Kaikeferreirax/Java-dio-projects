@@ -50,7 +50,7 @@ public class Product {
         StringBuilder sb = new StringBuilder();
         sb.append(" Product name: " + name +"\n");
         sb.append(" Product id: " + id +"\n");
-        sb.append(" Product (KG) price: $" + price * 1000 +"\n");
+        sb.append(" Product (KG) price: $" + String.format("%.2f",price * 1000) +"\n");
 
 
        return sb.toString();
