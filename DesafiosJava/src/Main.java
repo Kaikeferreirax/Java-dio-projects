@@ -11,15 +11,8 @@ public class Main {
         DateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
         Date date = new Date();
 
-        /*INICIANDO PROJETO E INSTANCIANDO UMA LISTA QUE CONTENHA OS PRODUTOS*/
-
-        Map<Integer, Product> products = new HashMap<>() {{
-            put(1011, new Product("Alcatra", 1011, 0.0095));
-            put(1111, new Product("File", 1111, 0.0073));
-            put(1001, new Product("Coxão mole", 1001, 0.0082));
-            put(1010, new Product("Patinho", 1010, 0.0080));
-
-        }};
+        // Storing products in this map
+        Map<Integer, Product> products = new LinkedHashMap<>();
 
         Random random = new Random();
 
@@ -50,7 +43,7 @@ public class Main {
                 String priceStr = sc.nextLine();
                 double price = toDouble(priceStr);
                 //validation
-                while (price  <  0) {
+                while (price < 0) {
                     System.out.println("The value is invalid, Type again! ");
                     String otherPrice = sc.nextLine();
                     price = toDouble(otherPrice);
@@ -61,7 +54,8 @@ public class Main {
                 System.out.println("Invalid code!");
             }
 
-        }
+        } else if (products.isEmpty()) {
+            // Showing products list
             Set<Map.Entry<Integer, Product>> entries = products.entrySet();
             for (Map.Entry<Integer, Product> entry : entries) {
                 System.out.println(entry.getKey() + " - " +
@@ -70,6 +64,7 @@ public class Main {
                         + String.format("%.2f", entry.getValue().getPrice()));
             }
 
+            // Weighing Products
             System.out.println("Type code of product:");
             int typed = sc.nextInt();
 
@@ -90,36 +85,16 @@ public class Main {
             } else {
                 System.out.println("Product not found");
             }
-
-
-
-       /*
-        int typed = sc.nextInt();
-
-        Set<Map.Entry<Integer,String>> entries = products.entrySet();
-
-        for(Map.Entry<Integer,String> entry1 : entries){
-            if(entry1.){
-
-            }
         }
-
-        if(products.containsKey(typed)){
-            System.out.println(products.get(typed));
-        } else {
-            System.out.println("Product not found!");
-        }
-        */
-
         sc.close();
     }
 
-    public static double toDouble(String price){
-        String newPrice = price.replace(",",".");
-        double valueConverted = - 1d;
+    public static double toDouble(String price) {
+        String newPrice = price.replace(",", ".");
+        double valueConverted = -1d;
         try {
-            valueConverted =  Double.parseDouble(newPrice);
-        }catch (NumberFormatException e) {
+            valueConverted = Double.parseDouble(newPrice);
+        } catch (NumberFormatException e) {
         }
         return valueConverted;
     }
